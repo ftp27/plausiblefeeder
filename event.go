@@ -156,6 +156,7 @@ func (pef *PlausibleEventFeeder) reportEventToPlausible(ctx context.Context, cli
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("User-Agent", event.userAgent)
 	request.Header.Set("X-Forwarded-For", event.remoteIP.String())
+	request.Header.Set("X-Plausible-IP", event.remoteIP.String())
 
 	// Send to plausible.
 	resp, err := client.Do(request)
